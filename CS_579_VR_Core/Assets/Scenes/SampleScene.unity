@@ -8396,7 +8396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af6bf904e410ee8479f9093d8830d1f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LocomotionProvider: {fileID: 0}
+  m_LocomotionProvider: {fileID: 1926161652}
   m_MinHeight: 0
   m_MaxHeight: Infinity
 --- !u!143 &1926161655
@@ -8415,7 +8415,7 @@ CharacterController:
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.001
-  m_MinMoveDistance: 0.001
+  m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!114 &1926161656
 MonoBehaviour:
@@ -8432,7 +8432,7 @@ MonoBehaviour:
   jumpButton: {fileID: 9122290592803422179, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
   jumpHeight: 9
-  gravityValue: -1.62
+  gravityValue: -2
 --- !u!1 &1941179788
 GameObject:
   m_ObjectHideFlags: 0
@@ -8917,6 +8917,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red Light
       objectReference: {fileID: 0}
+    - target: {fileID: 3840463415180714386, guid: cbdeb22276d969f4da721eee27b1fbd0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3840463415180714397, guid: cbdeb22276d969f4da721eee27b1fbd0,
         type: 3}
       propertyPath: dimColor
@@ -9005,6 +9010,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Red Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 7863665376062668560, guid: fee34a920d5bc7e47b79d56ef0910cbe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7863665376062668572, guid: fee34a920d5bc7e47b79d56ef0910cbe,
         type: 3}
