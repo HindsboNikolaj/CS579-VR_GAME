@@ -36,4 +36,5 @@ public class LowerBodyAnimationController : MonoBehaviour
         animator.SetFloat("x", Mathf.Lerp(previousX, Mathf.Clamp(localHeadSpeed.x, -1, 1), lerpFactor));
         animator.SetFloat("y", Mathf.Lerp(previousY, Mathf.Clamp(localHeadSpeed.z, -1, 1), lerpFactor));
     }
+
 }
