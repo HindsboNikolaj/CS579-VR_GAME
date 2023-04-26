@@ -12,39 +12,46 @@ public class GameManager : MonoBehaviour
     private GameObject player;
     private float gameStartDelay = 1;
     private bool gameOver = true;
+    private bool gameCompleted = false;
     
     public float flashLength = 1;
     private float timeBetweenFlashes = 0.5f;
     private float timeBetweenRounds = 1;
 
     private int numRounds = 3;
-    private int firstSeqLength = 3;
+    private int firstSeqLength = 1;
     private string currSeq;
     private int currSeqIdx;
     
     private bool waitingForUserInput = false;
     private string userInput = "";
+    private float buttonTriggerDistance = 5;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.Find("XR Origin");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameOver && Input.GetKeyDown(KeyCode.E)) {
-            if (GetDistanceFromPlayer(startButton) < 2) {
+        if (gameOver && !gameCompleted && Input.GetButtonDown("XRI_Right_SecondaryButton")) {
+            if (GetDistanceFromPlayer(startButton) < buttonTriggerDistance) {
+                Debug.Log("0");
                 gameOver = false;
                 StartCoroutine(beginGame());
             }
         }
 
-        if (waitingForUserInput && Input.GetKeyDown(KeyCode.E)) {
+        if (waitingForUserInput && Input.GetButtonDown("XRI_Right_SecondaryButton")) {
             for (int i = 0; i < buttons.Length; i++) {
-                if (GetDistanceFromPlayer(buttons[i]) < 2) {
+                if (GetDistanceFromPlayer(buttons[i]) < buttonTriggerDistance) {
                     userInput += i;
+
+                    foreach(GameObject light in lights) {
+                        light.GetComponent<LightManager>().cancelFlash();
+                    }
 
                     if (currSeq == userInput) {
                         waitingForUserInput = false;
@@ -52,6 +59,7 @@ public class GameManager : MonoBehaviour
                         if (currSeqIdx == numRounds - 1) {
                             ShowStatus(true);
                             gameOver = true;
+                            gameCompleted = true;
                         }
                         else {
                             lights[i].GetComponent<LightManager>().flashLight();
@@ -76,12 +84,12 @@ public class GameManager : MonoBehaviour
         
         // Iterate through each round
         for (int i = 0; i < numRounds; i++) {
-            currSeq = "";
-            currSeqIdx = i;
-
             if (gameOver) {
                 break;
             }
+            
+            currSeq = "";
+            currSeqIdx = i;
 
             // Flash randomized light sequence
             for (int j = 0; j < firstSeqLength + currSeqIdx; j++) {

@@ -27,6 +27,10 @@ public class LightManager : MonoBehaviour
         Invoke("dim", flashLength);
     }
 
+    public void cancelFlash() {
+        CancelInvoke();
+    }
+
     public void showStatus(bool success) {
         lightRenderer.material = success ? successColor : failColor;
     }
