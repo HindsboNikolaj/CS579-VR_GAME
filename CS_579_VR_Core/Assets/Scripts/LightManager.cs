@@ -11,6 +11,7 @@ public class LightManager : MonoBehaviour
 
     private Renderer materialRenderer;
     private Light lightComponent;
+    private AudioSource audioSource;
     private float flashLength; // Change in GameManager.cs
 
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class LightManager : MonoBehaviour
     {
         materialRenderer = GetComponent<Renderer>();
         lightComponent = GetComponent<Light>();
+        audioSource = GetComponent<AudioSource>();
         flashLength = GameObject.Find("GameManager").GetComponent<GameManager>().flashLength;
     }
 
@@ -40,6 +42,7 @@ public class LightManager : MonoBehaviour
     }
 
     public void flash() {
+        audioSource.Play();
         materialRenderer.material = litColor;
         lightComponent.enabled = true;
         lightComponent.color = materialRenderer.material.color;

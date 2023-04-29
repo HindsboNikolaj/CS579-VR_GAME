@@ -38,43 +38,16 @@ public class GameManager : MonoBehaviour
     {
         if (gameOver && !gameCompleted && Input.GetButtonDown("XRI_Right_SecondaryButton")) {
             if (GetDistanceFromPlayer(startButton) < buttonTriggerDistance) {
-                Debug.Log("0");
                 gameOver = false;
                 StartCoroutine(beginGame());
             }
         }
+    }
 
-        if (waitingForUserInput && Input.GetButtonDown("XRI_Right_SecondaryButton")) {
-            for (int i = 0; i < buttons.Length; i++) {
-                if (GetDistanceFromPlayer(buttons[i]) < buttonTriggerDistance) {
-                    userInput += i;
-
-                    foreach(GameObject light in lights) {
-                        light.GetComponent<LightManager>().cancelFlash();
-                    }
-
-                    if (currSeq == userInput) {
-                        waitingForUserInput = false;
-
-                        if (currSeqIdx == numRounds - 1) {
-                            ShowStatus(true);
-                            gameOver = true;
-                            gameCompleted = true;
-                        }
-                        else {
-                            lights[i].GetComponent<LightManager>().flashLight();
-                        }
-                    }
-                    else if (!currSeq.StartsWith(userInput)) {
-                        ShowStatus(false);
-                        waitingForUserInput = false;
-                        gameOver = true;
-                    }
-                    else {
-                        lights[i].GetComponent<LightManager>().flashLight();
-                    }
-                }
-            }
+    public void StartButtonPressed() {
+        if (gameOver && !gameCompleted) {
+            gameOver = false;
+            StartCoroutine(beginGame());
         }
     }
 
@@ -114,6 +87,43 @@ public class GameManager : MonoBehaviour
 
     float GetDistanceFromPlayer(GameObject obj) {
         return (player.transform.position - obj.transform.position).magnitude;
+    }
+
+    public bool GetUserInput(GameObject button) {
+        if (waitingForUserInput) {
+            for (int i = 0; i < buttons.Length; i++) {
+                if (buttons[i] == button) {
+                    userInput += i;
+
+                    foreach(GameObject light in lights) {
+                        light.GetComponent<LightManager>().cancelFlash();
+                    }
+
+                    if (currSeq == userInput) {
+                        waitingForUserInput = false;
+
+                        if (currSeqIdx == numRounds - 1) {
+                            ShowStatus(true);
+                            gameOver = true;
+                            gameCompleted = true;
+                        }
+                        else {
+                            lights[i].GetComponent<LightManager>().flashLight();
+                        }
+                    }
+                    else if (!currSeq.StartsWith(userInput)) {
+                        ShowStatus(false);
+                        waitingForUserInput = false;
+                        gameOver = true;
+                        return false;
+                    }
+                    else {
+                        lights[i].GetComponent<LightManager>().flashLight();
+                    }
+                }
+            }
+        }
+        return true;
     }
 
     void ShowStatus(bool success) {
