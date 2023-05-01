@@ -1461,6 +1461,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7464980214373371376, guid: 0ca45e318efa4a94bb53184a690910b3,
         type: 3}
+      propertyPath: m_AttachTransform
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464980214373371376, guid: 0ca45e318efa4a94bb53184a690910b3,
+        type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 264804773}
@@ -9193,6 +9198,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1758091307, guid: dc89918c637db3245aee2ad426bb369a, type: 3}
+      propertyPath: m_text
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758091307, guid: dc89918c637db3245aee2ad426bb369a, type: 3}
+      propertyPath: m_fontSize
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758091307, guid: dc89918c637db3245aee2ad426bb369a, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1682064743277477728, guid: dc89918c637db3245aee2ad426bb369a,
         type: 3}
       propertyPath: m_InteractionManager
@@ -9257,11 +9274,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1682064743277477790, guid: dc89918c637db3245aee2ad426bb369a,
-        type: 3}
-      propertyPath: weight
-      value: 142
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc89918c637db3245aee2ad426bb369a, type: 3}

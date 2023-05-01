@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameButton : MonoBehaviour
 {
     public AudioClip postitiveSound;
+    public AudioClip neutralSound;
     public AudioClip negativeSound;
     private AudioSource audioSource;
 
@@ -28,13 +29,18 @@ public class GameButton : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         if (isInteractable && other.gameObject.CompareTag("Hand")) {
             PlayAnimation();
-            bool didPressCorrectButton = gameManager.GetUserInput(transform.parent.gameObject);
-            
-            if (didPressCorrectButton) {
-                audioSource.PlayOneShot(postitiveSound);
-            }
-            else {
-                audioSource.PlayOneShot(negativeSound);
+            int inputStatus = gameManager.GetUserInput(transform.parent.gameObject);
+
+            switch (inputStatus) {
+                case 0:
+                    audioSource.PlayOneShot(neutralSound);
+                    break;
+                case 1:
+                    audioSource.PlayOneShot(postitiveSound);
+                    break;
+                case 2:
+                    audioSource.PlayOneShot(negativeSound);
+                    break;
             }
         }
     }

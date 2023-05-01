@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     private float timeBetweenFlashes = 0.5f;
     private float timeBetweenRounds = 1;
 
-    private int numRounds = 1;
+    private int numRounds = 3;
     private int firstSeqLength = 1;
     private string currSeq;
     private int currSeqIdx;
@@ -89,7 +89,8 @@ public class GameManager : MonoBehaviour
         return (player.transform.position - obj.transform.position).magnitude;
     }
 
-    public bool GetUserInput(GameObject button) {
+    // Returns 0 if game isn't finished, 1 if game is successfuly completed, and 2 if game is failed
+    public int GetUserInput(GameObject button) {
         if (waitingForUserInput) {
             for (int i = 0; i < buttons.Length; i++) {
                 if (buttons[i] == button) {
@@ -106,6 +107,7 @@ public class GameManager : MonoBehaviour
                             ShowStatus(true);
                             gameOver = true;
                             gameCompleted = true;
+                            return 1;
                         }
                         else {
                             lights[i].GetComponent<LightManager>().flashLight();
@@ -115,7 +117,7 @@ public class GameManager : MonoBehaviour
                         ShowStatus(false);
                         waitingForUserInput = false;
                         gameOver = true;
-                        return false;
+                        return 2;
                     }
                     else {
                         lights[i].GetComponent<LightManager>().flashLight();
@@ -123,7 +125,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        return true;
+        return 0;
     }
 
     void ShowStatus(bool success) {
