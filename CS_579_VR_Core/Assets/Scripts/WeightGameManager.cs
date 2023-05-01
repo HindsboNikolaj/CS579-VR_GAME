@@ -7,14 +7,16 @@ public class WeightGameManager : MonoBehaviour
 {
     public GameObject[] sockets;
     public GameObject portal;
+    public AudioClip successAudio;
 
+    private AudioSource audioSource;
     private float targetWeight = 341;
     private float currWeight = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        audioSource = GameObject.Find("GameAudio").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,6 +37,7 @@ public class WeightGameManager : MonoBehaviour
 
         if (currWeight == targetWeight) {
             portal.SetActive(true);
+            audioSource.PlayOneShot(successAudio);
         }
     }
 }
