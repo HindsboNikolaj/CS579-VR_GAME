@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Portal
   - Hand
+  - Weight
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Grabbable
+  - Player
   - 
   - 
   - 

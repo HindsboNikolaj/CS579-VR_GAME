@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject shipPortal;
 
     private GameObject player;
-    private float gameStartDelay = 1;
+    private float gameStartDelay = 2;
     private bool gameOver = true;
     private bool gameCompleted = false;
     
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     private float timeBetweenFlashes = 0.5f;
     private float timeBetweenRounds = 1;
 
-    private int numRounds = 3;
+    private int numRounds = 1;
     private int firstSeqLength = 1;
     private string currSeq;
     private int currSeqIdx;
