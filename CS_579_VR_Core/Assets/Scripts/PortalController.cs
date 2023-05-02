@@ -5,6 +5,7 @@ using UnityEngine;
 public class PortalController : MonoBehaviour
 {
     public GameObject exitPortal;
+    public bool playerCanTeleport = true;
 
     private Vector3 portalOffset;
     private AudioSource audioSource;
@@ -20,10 +21,12 @@ public class PortalController : MonoBehaviour
     void Update() {}
 
     void OnTriggerEnter(Collider other) {
-        other.gameObject.transform.position = exitPortal.transform.position + portalOffset;
-        other.gameObject.transform.rotation = exitPortal.transform.rotation;
+        if (exitPortal != null && (playerCanTeleport || other.gameObject.name != "XR Origin")) {
+            other.gameObject.transform.position = exitPortal.transform.position + portalOffset;
+            other.gameObject.transform.rotation = exitPortal.transform.rotation;
 
-        audioSource.Play();
-        exitPortal.GetComponent<AudioSource>().Play();
+            audioSource.Play();
+            exitPortal.GetComponent<AudioSource>().Play();
+        }
     }
 }
