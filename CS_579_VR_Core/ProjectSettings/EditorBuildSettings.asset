@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PortalPuzzle.unity
     guid: fab905b80cde17f4da7805ff4581497a
+  - enabled: 1
+    path: Assets/Scenes/Platformer.unity
+    guid: 8d04c1c56b0cef848b4e729a675a9bcf
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260,
       type: 2}

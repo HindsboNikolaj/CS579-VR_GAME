@@ -244,8 +244,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1071058253}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-=======
 --- !u!1 &64624622
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +327,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> HeadUpDisplay_MiscCharacterWork
 --- !u!4 &123310451 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 582232754632345037, guid: 156d19f5e1b4b53469340ce62b82f203,
