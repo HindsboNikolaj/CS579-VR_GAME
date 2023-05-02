@@ -9,13 +9,17 @@ public class LightManager : MonoBehaviour
     public Material successColor;
     public Material failColor;
 
-    private Renderer lightRenderer;
+    private Renderer materialRenderer;
+    private Light lightComponent;
+    private AudioSource audioSource;
     private float flashLength; // Change in GameManager.cs
 
     // Start is called before the first frame update
     void Start()
     {
-        lightRenderer = gameObject.GetComponent<Renderer>();
+        materialRenderer = GetComponent<Renderer>();
+        lightComponent = GetComponent<Light>();
+        audioSource = GetComponent<AudioSource>();
         flashLength = GameObject.Find("GameManager").GetComponent<GameManager>().flashLength;
     }
 
@@ -27,15 +31,25 @@ public class LightManager : MonoBehaviour
         Invoke("dim", flashLength);
     }
 
+    public void cancelFlash() {
+        CancelInvoke();
+    }
+
     public void showStatus(bool success) {
-        lightRenderer.material = success ? successColor : failColor;
+        materialRenderer.material = success ? successColor : failColor;
+        lightComponent.enabled = true;
+        lightComponent.color = materialRenderer.material.color;
     }
 
     public void flash() {
-        lightRenderer.material = litColor;
+        audioSource.Play();
+        materialRenderer.material = litColor;
+        lightComponent.enabled = true;
+        lightComponent.color = materialRenderer.material.color;
     }
 
     public void dim() {
-        lightRenderer.material = dimColor;
+        materialRenderer.material = dimColor;
+        lightComponent.enabled = false;
     }
 }
