@@ -6,10 +6,9 @@ using UnityEngine.SceneManagement;
 public class button_stuff : MonoBehaviour
 {
     public void on_begin(){
-        SceneManager.LoadScene("Platformer");
+        SceneManager.LoadScene("SampleScene");
     }
-    public void distroy_canvas(GameObject thing){
+    public void destroy_canvas(GameObject thing){
         Destroy(thing);
-        Destroy(this);
     }
 }
