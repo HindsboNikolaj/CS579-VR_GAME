@@ -1,7 +1,7 @@
 # CS579-VR_GAME
 The main group repository for our group game. 
 
-Here we created a space puzzle game for enjoyment on a VR headset.
+Here we created a space puzzle game for enjoyment on a VR headset. The game was made using Unity.
 
 If you would like to play our game here is an link to the APK: https://drive.google.com/file/d/1e8cW8NsYfzacfQxpPNgPkk4kpOFlmTix/view
 
